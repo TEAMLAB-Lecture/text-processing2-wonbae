@@ -70,17 +70,21 @@ def to_camel_case(underscore_str):
             "alreadyCamel"
     """
     tmpunder = underscore_str[:]
-    tmpunder = tmpunder.strip('_').lower()
-    list = tmpunder.split('_')
-    flag = True
-    res = ""
 
-    for word in list:
-        if flag:
-            res += word
-            flag = False
-        else:
-            res += word.capitalize()
+    if '_' not in tmpunder:
+        return tmpunder
+    else:
+        tmpunder = tmpunder.strip('_').lower()
+        list = tmpunder.split('_')
+        flag = True
+        res = ""
+
+        for word in list:
+            if flag:
+                res += word
+                flag = False
+            else:
+                res += word.capitalize()
             
     camelcase_str = res
     return camelcase_str
